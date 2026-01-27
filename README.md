@@ -106,7 +106,7 @@ Item {
 }
 ```
 
-### Quickshell Integration
+### Quickshell Integration(My config):
 
 ```qml
 import Quickshell
