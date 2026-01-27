@@ -1,3 +1,7 @@
+# Demo
+
+https://github.com/user-attachments/assets/bb3a5e49-5c8b-4e9b-ae4b-3fda1b8279ba
+
 # CavaMonitor
 
 This plugin provides real-time audio spectrum analysis for use in Quickshell or other QML applications.
@@ -114,17 +118,14 @@ import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
 import CavaMonitor 1.0
-
 Scope {
     id: root
-    Colors { id: colors }
     
     property int barCount: 40
     property int maxBarWidth: 300
     property int barHeight: 15
     property int barGap: 10
     
-    // CavaMonitor plugin replaces the Process-based approach
     CavaMonitor {
         id: cava
         bars: root.barCount
@@ -172,18 +173,18 @@ Scope {
                             readonly property real magnitude: cava.values[index] || 0
                             
                             height: root.barHeight
-                            width: 6 + (magnitude * root.maxBarWidth)
+                            width: 6 + (magnitude * root.maxBarWidth * 1.3)
                             radius: root.barHeight / 2
                             
                             anchors.right: parent.right
                             
-                            color: colors.color4
+                            color: "#7aa2f7"
                             
                             gradient: Gradient {
                                 orientation: Gradient.Horizontal
                                 GradientStop { position: 0.0; color: "#ffffff" }
-                                GradientStop { position: 0.3; color: colors.color4 }
-                                GradientStop { position: 1.0; color: colors.color5 }
+                                GradientStop { position: 0.3; color: "#7aa2f7" }
+                                GradientStop { position: 1.0; color: "#bb9af7" }
                             }
                             
                             border.color: Qt.rgba(1, 1, 1, 0.2)
