@@ -44,11 +44,9 @@ sudo ldconfig
 ```
 
 ### 3. Build CavaMonitor Plugin
+clone this repo and:
 
 ```bash
-git clone https://github.com/yourusername/CavaMonitor.git
-cd CavaMonitor
-
 mkdir build
 cd build
 
