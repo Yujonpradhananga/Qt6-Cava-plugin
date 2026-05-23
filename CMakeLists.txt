@@ -5,6 +5,12 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)
 
+# Ensure the QML plugin can find libcavamonitor.so in the same install directory
+# at runtime, regardless of whether it's in the Nix store or ~/.local.
+set(CMAKE_INSTALL_RPATH "$ORIGIN")
+set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
+set(CMAKE_SKIP_BUILD_RPATH OFF)
+
 find_package(Qt6 REQUIRED COMPONENTS Core Qml)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(Pipewire REQUIRED IMPORTED_TARGET libpipewire-0.3)
