@@ -11,8 +11,6 @@
       let
         pkgs = import nixpkgs { inherit system; };
 
-        # Build libcava (cavacore) as a shared library from source,
-        # since the nixpkgs `cava` package only ships the CLI binary.
         libcava = pkgs.stdenv.mkDerivation {
           pname = "libcava";
           version = "0.10.7";
@@ -27,7 +25,6 @@
           buildInputs = [ pkgs.fftw ];
           nativeBuildInputs = [ pkgs.pkg-config ];
 
-          # Only build the core library — skip the rest of cava
           buildPhase = ''
             gcc -shared -fPIC -o libcava.so cavacore.c \
               -lm -lfftw3 \
@@ -41,7 +38,6 @@
             cp libcava.so $out/lib/
             cp cavacore.h $out/include/cava/
 
-            # Create a pkg-config file so CMake can find it
             cat > $out/lib/pkgconfig/cava.pc << EOF
             prefix=$out
             libdir=\''${prefix}/lib
@@ -81,10 +77,6 @@
             "-DCMAKE_INSTALL_PREFIX=${placeholder "out"}/lib/qt6/qml"
           ];
 
-          # Nix's autoPatchelf fixup phase runs after cmake install and rewrites
-          # RPATHs, which can strip out our $ORIGIN entry. Re-add it afterwards
-          # so the plugin finds libcavamonitor.so in the same directory whether
-          # it lives in the Nix store or is copied to ~/.local by home-manager.
           postFixup = ''
             patchelf --add-rpath '$ORIGIN' \
               $out/lib/qt6/qml/CavaMonitor/libcavamonitorplugin.so
