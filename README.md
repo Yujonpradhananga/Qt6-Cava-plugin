@@ -26,7 +26,9 @@ This plugin provides real-time audio spectrum analysis for use in Quickshell or 
 
 ### FOR SUPERIOR NIX:
 
+```bash
 nix build && cp -rL result/lib/qt6/qml/CavaMonitor ~/.local/lib/qt6/qml/
+```
 
 ### Build and Install Cava Library
 
