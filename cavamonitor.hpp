@@ -5,7 +5,7 @@
 #include <QTimer>
 #include <QVector>
 #include <atomic>
-#include <cava/cavacore.h>
+#include "cavacore.h"
 #include <pipewire/pipewire.h>
 #include <qqmlintegration.h>
 #include <spa/param/audio/format-utils.h>

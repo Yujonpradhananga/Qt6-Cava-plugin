@@ -1,7 +1,7 @@
 #include "cavamonitor.hpp"
 
 #include <algorithm>
-#include <cava/cavacore.h>
+#include "cavacore.h"
 #include <cmath>
 #include <cstddef>
 #include <pipewire/pipewire.h>
